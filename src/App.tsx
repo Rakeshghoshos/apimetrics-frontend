@@ -6,6 +6,7 @@ import Signup from './components/auth/SignUp';
 import Dashboard from './pages/Dashboard';
 import Metrics from './components/apimetrics/Metrics';
 import Storage from './core/storage';
+import Logout from './components/auth/Logout';
 
 function App() {
   const token = Storage.getValues("token");
@@ -25,6 +26,10 @@ function App() {
         {
           path:"apimmetrics",
           element: token !== undefined ? <Metrics /> : <LoginPage />
+        },
+        {
+          path:"logout",
+          element: token !== undefined ? <Logout /> : <LoginPage />
         }
       ]
     },

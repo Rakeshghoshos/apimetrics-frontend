@@ -12,7 +12,7 @@ function Dashboard() {
   return (
     <div className='flex flex-row'>
      <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-     <div>
+     <div className='w-5/6'>
       <Outlet />
      </div>
     </div>

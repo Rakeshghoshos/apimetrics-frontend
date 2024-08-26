@@ -25,6 +25,9 @@ const SideBar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
           <li>
             <Link to="/dashboard/apimmetrics" className="block p-4 hover:bg-gray-700">Api-metrics</Link>
           </li>
+          <li>
+            <Link to="/dashboard/logout" className="block p-4 hover:bg-gray-700">Logout</Link>
+          </li>
         </ul>
       </nav>
       <div className="p-4 border-t border-gray-700">
