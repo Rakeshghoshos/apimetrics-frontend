@@ -49,7 +49,7 @@ const Metrics: React.FC = () => {
   };
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto p-4">
       <div className="flex justify-between items-center mb-4">
         <div>
           <label htmlFor="limit" className="mr-2 text-sm font-medium text-gray-700">Limit:</label>
