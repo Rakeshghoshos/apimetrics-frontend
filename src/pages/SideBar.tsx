@@ -10,7 +10,7 @@ const SideBar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   return (
     <div className={`h-screen fixed inset-0 bg-gray-800 text-white transition-transform ${isOpen ? 'transform translate-x-0' : 'transform -translate-x-full'} lg:translate-x-0 lg:relative lg:w-64 lg:flex lg:flex-col`}>
       <div className="p-4 flex justify-between items-center">
-        <span className="text-xl font-bold">MyApp</span>
+        <span className="text-xl font-bold">ApiMetrics</span>
         <button onClick={toggleSidebar} className="lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -31,7 +31,7 @@ const SideBar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         </ul>
       </nav>
       <div className="p-4 border-t border-gray-700">
-        <p className="text-sm">© 2024 MyApp</p>
+        <p className="text-sm">© 2024 ApiMetrics</p>
       </div>
     </div>
   );
