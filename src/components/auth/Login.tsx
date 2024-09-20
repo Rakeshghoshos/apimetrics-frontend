@@ -19,17 +19,21 @@ export default function Login() {
   const user = useAppSelector((state)=>state.user.user);
   const onSubmit: SubmitHandler<FormValues> =(data:FormValues) => {
     dispatch(fetchUserAsync(data));
-    if(!lodash.isEmpty(user)){
-      Storage.setValues({key:'token' ,value:user.data?.token || null});
-      Storage.setValues({key:'user',value:JSON.stringify(user.data) || null});
-    }
   };
   
   useEffect(() => {
-    if(Storage.getValues('token') && Storage.getValues('token') != null && Storage.getValues('user') != null){
-      navigate('/dashboard/home');
+    if (!lodash.isEmpty(user)) {
+      Storage.setValues({ key: 'token', value: user.data?.token || null });
+      Storage.setValues({ key: 'user', value: JSON.stringify(user.data) || null });
+      navigate('/dashboard/home'); 
     }
-  }, [Storage.getValues('token'),Storage.getValues('user') ])
+  }, [user, navigate]);  
+
+  useEffect(() => {
+    if (Storage.getValues('token') && Storage.getValues('user') != null) {
+      navigate('/dashboard/home'); 
+    }
+  }, [navigate]);
   
   
   const handleFormSubmit = (e:FormEvent) => {
