@@ -20,9 +20,9 @@ export default function Login() {
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
     dispatch(fetchUserAsync(data));
     if (!lodash.isEmpty(user)) {
-      Storage.setValues({ key: 'token', value: user.data?.token });
-      Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
       if(user?.data != 0 && user?.token != undefined){
+         Storage.setValues({ key: 'token', value: user.data?.token });
+      Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
        navigate('/dashboard/home');
     }else{
       alert("Invalid credentials");
