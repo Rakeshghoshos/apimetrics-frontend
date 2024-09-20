@@ -26,7 +26,7 @@ export default function Login() {
   };
   
   useEffect(() => {
-    if(Storage.getValues('token')){
+    if(Storage.getValues('token') && Storage.getValues('token') != undefined){
       navigate('/dashboard/home');
     }
   }, [Storage.getValues('token')])
