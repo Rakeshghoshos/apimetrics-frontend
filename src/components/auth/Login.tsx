@@ -28,10 +28,8 @@ export default function Login() {
   useEffect(() => {
     if(Storage.getValues('token') && Storage.getValues('token') != null && Storage.getValues('user') != null){
       navigate('/dashboard/home');
-    }else{
-      alert("Invalid Credentials");
     }
-  }, [Storage.getValues('token')])
+  }, [Storage.getValues('token'),Storage.getValues('user') ])
   
   
   const handleFormSubmit = (e:FormEvent) => {
