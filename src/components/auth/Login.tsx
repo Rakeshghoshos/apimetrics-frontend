@@ -26,7 +26,7 @@ export default function Login() {
   };
   
   useEffect(() => {
-    if(Storage.getValues('token') && Storage.getValues('token') != undefined){
+    if(Storage.getValues('token') && Storage.getValues('token') != undefined && Storage.getValues('user') != 0){
       navigate('/dashboard/home');
     }else{
       alert("Invalid Credentials");
