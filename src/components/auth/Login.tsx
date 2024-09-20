@@ -20,13 +20,13 @@ export default function Login() {
   const onSubmit: SubmitHandler<FormValues> =(data:FormValues) => {
     dispatch(fetchUserAsync(data));
     if(!lodash.isEmpty(user)){
-      Storage.setValues({key:'token' ,value:user.data?.token});
-      Storage.setValues({key:'user',value:JSON.stringify(user.data)});
+      Storage.setValues({key:'token' ,value:user.data?.token || null});
+      Storage.setValues({key:'user',value:JSON.stringify(user.data) || null});
     }
   };
   
   useEffect(() => {
-    if(Storage.getValues('token') && Storage.getValues('token') != undefined && Storage.getValues('user') != 0){
+    if(Storage.getValues('token') && Storage.getValues('token') != null && Storage.getValues('user') != null){
       navigate('/dashboard/home');
     }else{
       alert("Invalid Credentials");
