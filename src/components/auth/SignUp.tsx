@@ -21,9 +21,13 @@ const Signup: React.FC = () => {
     if (data.password === data.confirmPassword) {
       dispatch(signUpUserAsync(data));
       if(!lodash.isEmpty(user)){
-        console.log(user);
-        Storage.setValues({key:'token' ,value:user.data?.token});
-        Storage.setValues({key:'user',value:JSON.stringify(user.data)});
+         if(user?.data != 0 && user?.token != undefined){
+         Storage.setValues({ key: 'token', value: user.data?.token });
+      Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
+       navigate('/dashboard/home');
+    }else{
+      alert("Invalid credentials");
+    }
       }
     } else {
       // Handle error for password mismatch
