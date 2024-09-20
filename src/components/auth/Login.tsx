@@ -19,22 +19,18 @@ export default function Login() {
   const error = useAppSelector((state) => state.user.error); // Track errors
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
     dispatch(fetchUserAsync(data));
-    console.log(data);
-  };
-
-  useEffect(() => {
     if (!lodash.isEmpty(user)) {
       Storage.setValues({ key: 'token', value: user.data?.token });
       Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
-    }
-  }, [user, navigate]);
-
-  useEffect(() => {
-    if(user?.data != 0 && user?.token != undefined){
+      if(user?.data != 0 && user?.token != undefined){
        navigate('/dashboard/home');
     }else{
       alert("Invalid credentials");
     }
+    }
+  };
+  useEffect(() => {
+    
   }, [error]);
 
   const handleFormSubmit = (e: FormEvent) => {
