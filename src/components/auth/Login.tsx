@@ -26,12 +26,13 @@ export default function Login() {
     if (!lodash.isEmpty(user)) {
       Storage.setValues({ key: 'token', value: user.data?.token });
       Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
-      navigate('/dashboard/home');
     }
   }, [user, navigate]);
 
   useEffect(() => {
-    if (error) {
+    if(user?.data != 0 && user?.token != undefined){
+       navigate('/dashboard/home');
+    }else{
       alert("Invalid credentials");
     }
   }, [error]);
