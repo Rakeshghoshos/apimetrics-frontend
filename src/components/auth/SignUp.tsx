@@ -32,7 +32,7 @@ const Signup: React.FC = () => {
   };
 
   useEffect(() => {
-    if(Storage.getValues('token') && Storage.getValues('token') != undefined){
+    if(Storage.getValues('token') && Storage.getValues('token') != undefined && Storage.getValues('user') != 0){
         let uniqueCode = JSON.parse(Storage.getValues('user') as string).uniqueCode;
         alert("save this code you have to pass this into the options of package"+" "+"code id: "+ " " +uniqueCode);
       navigate('/dashboard/home');
