@@ -22,8 +22,8 @@ const Signup: React.FC = () => {
       dispatch(signUpUserAsync(data));
       if(!lodash.isEmpty(user)){
         console.log(user);
-        Storage.setValues({key:'token' ,value:user.data?.token});
-        Storage.setValues({key:'user',value:JSON.stringify(user.data)});
+        Storage.setValues({key:'token' ,value:user.data?.token || null});
+        Storage.setValues({key:'user',value:JSON.stringify(user.data) || null});
       }
     } else {
       // Handle error for password mismatch
@@ -32,12 +32,12 @@ const Signup: React.FC = () => {
   };
 
   useEffect(() => {
-    if(Storage.getValues('token') && Storage.getValues('token') != undefined && Storage.getValues('user') != 0){
+    if(Storage.getValues('token') && Storage.getValues('token') != null && Storage.getValues('user') != null){
         let uniqueCode = JSON.parse(Storage.getValues('user') as string).uniqueCode;
         alert("save this code you have to pass this into the options of package"+" "+"code id: "+ " " +uniqueCode);
       navigate('/dashboard/home');
     }
-  }, [Storage.getValues('token')])
+  }, [Storage.getValues('token'),Storage.getValues('user')])
 
   return (
     <>
