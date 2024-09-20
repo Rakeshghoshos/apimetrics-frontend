@@ -17,8 +17,8 @@ export default function Login() {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user.user);
   const error = useAppSelector((state) => state.user.error); // Track errors
-  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
-    dispatch(fetchUserAsync(data));
+  const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
+    await dispatch(fetchUserAsync(data));
     if (!lodash.isEmpty(user)) {
       if(user?.data != 0 && user?.token != undefined){
          Storage.setValues({ key: 'token', value: user.data?.token });
