@@ -20,17 +20,19 @@ export default function Login() {
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     await dispatch(fetchUserAsync(data));
   };
-  useEffect(() => {
-    if (!lodash.isEmpty(user)) {
-      if(user?.data != 0 && user?.token != undefined){
-         Storage.setValues({ key: 'token', value: user.data?.token });
+useEffect(() => {
+    // Check if user data is present and has the necessary fields
+    if (!lodash.isEmpty(user) && user?.data && user?.token) {
+      // Set token and user data in storage
+      Storage.setValues({ key: 'token', value: user.data.token });
       Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
-       navigate('/dashboard/home');
-    }else{
+      // Navigate to the dashboard
+      navigate('/dashboard/home');
+    } else if (user && !user?.data) {
       alert("Invalid credentials");
     }
-    }
-  }, [user]);
+  }, [user, navigate]);
+
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
