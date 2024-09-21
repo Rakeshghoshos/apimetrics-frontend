@@ -22,7 +22,7 @@ export default function Login() {
   };
 useEffect(() => {
   console.log(user);
-    if (!lodash.isEmpty(user) && user?.data && user?.token) {
+    if (!lodash.isEmpty(user) && user?.data && user?.data?.token) {
       Storage.setValues({ key: 'token', value: user.data.token });
       Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
       navigate('/dashboard/home');
