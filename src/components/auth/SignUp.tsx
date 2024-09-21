@@ -25,8 +25,6 @@ const Signup: React.FC = () => {
          Storage.setValues({ key: 'token', value: user.data?.token });
       Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
        navigate('/dashboard/home');
-    }else{
-      alert("Invalid credentials");
     }
       }
     } else {
