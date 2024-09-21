@@ -21,12 +21,10 @@ export default function Login() {
     await dispatch(fetchUserAsync(data));
   };
 useEffect(() => {
-    // Check if user data is present and has the necessary fields
+  console.log(user);
     if (!lodash.isEmpty(user) && user?.data && user?.token) {
-      // Set token and user data in storage
       Storage.setValues({ key: 'token', value: user.data.token });
       Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
-      // Navigate to the dashboard
       navigate('/dashboard/home');
     } else if (user && !user?.data) {
       alert("Invalid credentials");
