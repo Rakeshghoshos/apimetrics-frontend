@@ -23,7 +23,7 @@ export default function Login() {
       Storage.setValues({ key: 'token', value: user.data.token });
       Storage.setValues({ key: 'user', value: JSON.stringify(user.data) });
       navigate('/dashboard/home');
-    } else if (user && !user?.data) {
+    } else if (user && !user?.data?.toString() == '0') {
       alert("Invalid credentials");
     }
   };
