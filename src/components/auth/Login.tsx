@@ -19,6 +19,8 @@ export default function Login() {
   const error = useAppSelector((state) => state.user.error); // Track errors
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     await dispatch(fetchUserAsync(data));
+  };
+  useEffect(() => {
     if (!lodash.isEmpty(user)) {
       if(user?.data != 0 && user?.token != undefined){
          Storage.setValues({ key: 'token', value: user.data?.token });
@@ -28,10 +30,7 @@ export default function Login() {
       alert("Invalid credentials");
     }
     }
-  };
-  useEffect(() => {
-    
-  }, [error]);
+  }, [user]);
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
