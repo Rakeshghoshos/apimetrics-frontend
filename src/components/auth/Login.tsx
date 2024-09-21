@@ -27,8 +27,6 @@ export default function Login() {
     alert("Invalid credentials");
   }
 };
-
-  };
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     handleSubmit(onSubmit)();
