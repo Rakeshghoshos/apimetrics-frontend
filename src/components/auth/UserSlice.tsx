@@ -51,7 +51,15 @@ getUserResponse,
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload.user;
+      state.user.token = action.payload.token;
+    },
+    logout: (state) => {
+      state.user = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
         .addCase(fetchUserAsync.pending, (state) => {
@@ -79,6 +87,6 @@ export const userSlice = createSlice({
 },
 })
 
-export const { } = userSlice.actions
+export const { setUser, logout }  = userSlice.actions
 
 export default userSlice.reducer
